@@ -2,14 +2,14 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-interface ImageUploadProps {
+interface DropzoneProps {
   onChange: (base64: string) => void;
   label: string;
   value?: string;
   disabled?: boolean;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({
+const ImageUpload: React.FC<DropzoneProps> = ({
   onChange,
   label,
   value,
@@ -28,12 +28,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     (files: any) => {
       const file = files[0];
       const reader = new FileReader();
-
       reader.onload = (event: any) => {
         setBase64(event.target.result);
         handleChange(event.target.result);
       };
-
       reader.readAsDataURL(file);
     },
     [handleChange]
@@ -44,7 +42,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     onDrop: handleDrop,
     disabled,
     accept: {
-      "image/jpg": [],
       "image/jpeg": [],
       "image/png": [],
     },
@@ -60,7 +57,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       <input {...getInputProps()} />
       {base64 ? (
         <div className="flex items-center justify-center">
-          <Image src={base64} height={100} width={100} alt="Uploaded image" />
+          <Image src={base64} height="100" width="100" alt="Uploaded image" />
         </div>
       ) : (
         <p className="text-white">{label}</p>

@@ -1,9 +1,12 @@
+import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
-import Input from "../Input";
-import Modal from "../Modal";
+import { toast } from "react-hot-toast";
+
 import useLoginModal from "@/hooks/useLoginModal";
 import useRegisterModal from "@/hooks/useRegisterModal";
-import { signIn } from "next-auth/react";
+
+import Input from "../Input";
+import Modal from "../Modal";
 
 const LoginModal = () => {
   const loginModal = useLoginModal();
@@ -12,15 +15,6 @@ const LoginModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const onToggle = useCallback(() => {
-    if (isLoading) {
-      return;
-    }
-
-    loginModal.onClose();
-    registerModal.onOpen();
-  }, [isLoading, registerModal, loginModal]);
 
   const onSubmit = useCallback(async () => {
     try {
@@ -31,13 +25,20 @@ const LoginModal = () => {
         password,
       });
 
+      toast.success("Logged in");
+
       loginModal.onClose();
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
-  }, [LoginModal, email, password]);
+  }, [email, password, loginModal]);
+
+  const onToggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -60,11 +61,14 @@ const LoginModal = () => {
   const footerContent = (
     <div className="text-neutral-400 text-center mt-4">
       <p>
-        First time using{" "}
-        <span className="text-sky-500 font-semibold">Twippex</span>?
+        First time using Twitter?
         <span
           onClick={onToggle}
-          className="text-white cursor-pointer hover:underline"
+          className="
+            text-white 
+            cursor-pointer 
+            hover:underline
+          "
         >
           {" "}
           Create an account
@@ -78,7 +82,7 @@ const LoginModal = () => {
       disabled={isLoading}
       isOpen={loginModal.isOpen}
       title="Login"
-      actionLabel="Sign In"
+      actionLabel="Sign in"
       onClose={loginModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}

@@ -1,10 +1,12 @@
-import Form from "@/components/Form";
-import Header from "@/components/Header";
-import CommentFeed from "@/components/posts/CommentFeed";
-import PostItem from "@/components/posts/PostItem";
-import usePost from "@/hooks/usePost";
 import { useRouter } from "next/router";
 import { ClipLoader } from "react-spinners";
+
+import usePost from "@/hooks/usePost";
+
+import Header from "@/components/Header";
+import Form from "@/components/Form";
+import PostItem from "@/components/posts/PostItem";
+import CommentFeed from "@/components/posts/CommentFeed";
 
 const PostView = () => {
   const router = useRouter();
@@ -19,11 +21,16 @@ const PostView = () => {
       </div>
     );
   }
+
   return (
     <>
-      <Header label="Post" showBackArrow />
+      <Header showBackArrow label="Tweet" />
       <PostItem data={fetchedPost} />
-      <Form postId={postId as string} isComment placeholder="Post your reply" />
+      <Form
+        postId={postId as string}
+        isComment
+        placeholder="Tweet your reply"
+      />
       <CommentFeed comments={fetchedPost?.comments} />
     </>
   );

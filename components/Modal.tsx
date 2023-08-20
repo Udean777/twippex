@@ -1,8 +1,8 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Button from "./Button";
 
-interface ModelProps {
+interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
   onSubmit: () => void;
@@ -13,14 +13,14 @@ interface ModelProps {
   disabled?: boolean;
 }
 
-const Modal: React.FC<ModelProps> = ({
+const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   onSubmit,
   title,
   body,
-  footer,
   actionLabel,
+  footer,
   disabled,
 }) => {
   const handleClose = useCallback(() => {
@@ -29,7 +29,7 @@ const Modal: React.FC<ModelProps> = ({
     }
 
     onClose();
-  }, [disabled, onClose]);
+  }, [onClose, disabled]);
 
   const handleSubmit = useCallback(() => {
     if (disabled) {
@@ -37,7 +37,7 @@ const Modal: React.FC<ModelProps> = ({
     }
 
     onSubmit();
-  }, [disabled, onSubmit]);
+  }, [onSubmit, disabled]);
 
   if (!isOpen) {
     return null;
@@ -45,23 +45,68 @@ const Modal: React.FC<ModelProps> = ({
 
   return (
     <>
-      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800 bg-opacity-70">
+      <div
+        className="
+          justify-center 
+          items-center 
+          flex 
+          overflow-x-hidden 
+          overflow-y-auto 
+          fixed 
+          inset-0 
+          z-50 
+          outline-none 
+          focus:outline-none
+          bg-neutral-800
+          bg-opacity-70
+        "
+      >
         <div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
-          {/* Content */}
-          <div className="h-full lg:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-black outline-none focus:outline-none">
-            {/* Header */}
-            <div className="flex items-center justify-between p-10 rounded-t">
+          {/*content*/}
+          <div
+            className="
+            h-full
+            lg:h-auto
+            border-0 
+            rounded-lg 
+            shadow-lg 
+            relative 
+            flex 
+            flex-col 
+            w-full 
+            bg-black 
+            outline-none 
+            focus:outline-none
+            "
+          >
+            {/*header*/}
+            <div
+              className="
+              flex 
+              items-center 
+              justify-between 
+              p-10 
+              rounded-t
+              "
+            >
               <h3 className="text-3xl font-semibold text-white">{title}</h3>
               <button
+                className="
+                  p-1 
+                  ml-auto
+                  border-0 
+                  text-white 
+                  hover:opacity-70
+                  transition
+                "
                 onClick={handleClose}
-                className="p-1 ml-auto border-0 text-white hover:opacity-70 transition"
               >
                 <AiOutlineClose size={20} />
               </button>
             </div>
-            {/* Body */}
+            {/*body*/}
             <div className="relative p-10 flex-auto">{body}</div>
-            {/* footer */}
+            {/*footer*/}
             <div className="flex flex-col gap-2 p-10">
               <Button
                 disabled={disabled}

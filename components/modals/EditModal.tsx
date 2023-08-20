@@ -1,11 +1,13 @@
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useEditModal from "@/hooks/useEditModal";
 import useUser from "@/hooks/useUser";
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import Modal from "../Modal";
+
 import Input from "../Input";
+import Modal from "../Modal";
 import ImageUpload from "../ImageUpload";
 
 const EditModal = () => {
@@ -25,7 +27,13 @@ const EditModal = () => {
     setName(currentUser?.name);
     setUsername(currentUser?.username);
     setBio(currentUser?.bio);
-  }, [currentUser]);
+  }, [
+    currentUser?.name,
+    currentUser?.username,
+    currentUser?.bio,
+    currentUser?.profileImage,
+    currentUser?.coverImage,
+  ]);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,22 +50,22 @@ const EditModal = () => {
       });
       mutateFetchedUser();
 
-      toast.success("It's completely updated mate");
+      toast.success("Updated");
 
       editModal.onClose();
     } catch (error) {
-      toast.error("Something went wrong mate");
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
   }, [
-    bio,
+    editModal,
     name,
     username,
+    bio,
+    mutateFetchedUser,
     profileImage,
     coverImage,
-    editModal,
-    mutateFetchedUser,
   ]);
 
   const bodyContent = (
@@ -66,13 +74,13 @@ const EditModal = () => {
         value={profileImage}
         disabled={isLoading}
         onChange={(image) => setProfileImage(image)}
-        label="Upload profile photo"
+        label="Upload profile image"
       />
       <ImageUpload
         value={coverImage}
         disabled={isLoading}
         onChange={(image) => setCoverImage(image)}
-        label="Upload cover photo"
+        label="Upload cover image"
       />
       <Input
         placeholder="Name"
@@ -99,7 +107,7 @@ const EditModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={editModal.isOpen}
-      title="Edit ur freaking profile"
+      title="Edit your profile"
       actionLabel="Save"
       onClose={editModal.onClose}
       onSubmit={onSubmit}
