@@ -4,7 +4,7 @@ import usePosts from "@/hooks/usePosts";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import axios from "axios";
 import { useCallback, useState } from "react";
-import { Button } from "./Button";
+import Button from "./Button";
 import toast from "react-hot-toast";
 import Avatar from "./Avatar";
 import usePost from "@/hooks/usePost";
@@ -15,11 +15,7 @@ interface FormProps {
   postId?: string;
 }
 
-export const Form: React.FC<FormProps> = ({
-  placeholder,
-  isComment,
-  postId,
-}) => {
+const Form: React.FC<FormProps> = ({ placeholder, isComment, postId }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -89,3 +85,5 @@ export const Form: React.FC<FormProps> = ({
     </div>
   );
 };
+
+export default Form;

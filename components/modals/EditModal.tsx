@@ -4,11 +4,11 @@ import useUser from "@/hooks/useUser";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Modal } from "../Modal";
-import { Input } from "../Input";
-import { ImageUpload } from "../ImageUpload";
+import Modal from "../Modal";
+import Input from "../Input";
+import ImageUpload from "../ImageUpload";
 
-export const EditModal = () => {
+const EditModal = () => {
   const { data: currentUser } = useCurrentUser();
   const { mutate: mutateFetchedUser } = useUser(currentUser?.id);
   const editModal = useEditModal();
@@ -107,3 +107,5 @@ export const EditModal = () => {
     />
   );
 };
+
+export default EditModal;

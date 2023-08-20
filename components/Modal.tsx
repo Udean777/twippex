@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { Button } from "./Button";
+import Button from "./Button";
 
 interface ModelProps {
   isOpen?: boolean;
@@ -13,7 +13,7 @@ interface ModelProps {
   disabled?: boolean;
 }
 
-export const Modal: React.FC<ModelProps> = ({
+const Modal: React.FC<ModelProps> = ({
   isOpen,
   onClose,
   onSubmit,
@@ -79,3 +79,5 @@ export const Modal: React.FC<ModelProps> = ({
     </>
   );
 };
+
+export default Modal;

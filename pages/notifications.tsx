@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import Header from "@/components/Header";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import NotificationsFeed from "@/components/NotificationsFeed";

@@ -2,9 +2,9 @@ import { BsBellFill, BsHouseFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 
-import { SidebarLogo } from "./SidebarLogo";
-import { SidebarItem } from "./SidebarItem";
-import { SidebarTweetButton } from "./SidebarTweetButton";
+import SidebarLogo from "./SidebarLogo";
+import SidebarItem from "./SidebarItem";
+import SidebarTweetButton from "./SidebarTweetButton";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 

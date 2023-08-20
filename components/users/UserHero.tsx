@@ -6,7 +6,7 @@ interface UserHeroProps {
   userId: string;
 }
 
-export const UserHero: React.FC<UserHeroProps> = ({ userId }) => {
+const UserHero: React.FC<UserHeroProps> = ({ userId }) => {
   const { data: fetchedUser } = useUser(userId);
   return (
     <div>
@@ -26,3 +26,5 @@ export const UserHero: React.FC<UserHeroProps> = ({ userId }) => {
     </div>
   );
 };
+
+export default UserHero;

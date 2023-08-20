@@ -10,7 +10,7 @@ interface ButtonProps {
   outline?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   label,
   secondary,
   fullWidth,
@@ -40,3 +40,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
+export default Button;

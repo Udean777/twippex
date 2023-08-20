@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { BsTwitter } from "react-icons/bs";
 
-export const SidebarLogo = () => {
+const SidebarLogo = () => {
   const router = useRouter();
 
   return (
@@ -13,3 +13,5 @@ export const SidebarLogo = () => {
     </div>
   );
 };
+
+export default SidebarLogo;

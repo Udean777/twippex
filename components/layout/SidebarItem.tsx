@@ -14,7 +14,7 @@ interface SidebarItemProps {
   alert?: boolean;
 }
 
-export const SidebarItem: React.FC<SidebarItemProps> = ({
+const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   href,
   icon: Icon,
@@ -54,3 +54,5 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
     </div>
   );
 };
+
+export default SidebarItem;

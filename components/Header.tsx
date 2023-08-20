@@ -7,7 +7,7 @@ interface HeaderProps {
   showBackArrow?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ label, showBackArrow }) => {
+const Header: React.FC<HeaderProps> = ({ label, showBackArrow }) => {
   const router = useRouter();
 
   const handleBack = useCallback(() => {
@@ -30,3 +30,5 @@ export const Header: React.FC<HeaderProps> = ({ label, showBackArrow }) => {
     </div>
   );
 };
+
+export default Header;

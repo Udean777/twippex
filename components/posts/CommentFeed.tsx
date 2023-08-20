@@ -1,10 +1,10 @@
-import { CommentItem } from "./CommentItem";
+import CommentItem from "./CommentItem";
 
 interface CommentFeedProps {
   comments?: Record<string, any>[];
 }
 
-export const CommentFeed: React.FC<CommentFeedProps> = ({ comments = [] }) => {
+const CommentFeed: React.FC<CommentFeedProps> = ({ comments = [] }) => {
   return (
     <>
       {comments?.map((comment: Record<string, any>) => (
@@ -13,3 +13,5 @@ export const CommentFeed: React.FC<CommentFeedProps> = ({ comments = [] }) => {
     </>
   );
 };
+
+export default CommentFeed;

@@ -2,7 +2,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useUser from "@/hooks/useUser";
 import { format } from "date-fns";
 import { useMemo } from "react";
-import { Button } from "../Button";
+import Button from "../Button";
 import { BiCalendar } from "react-icons/bi";
 import useEditModal from "@/hooks/useEditModal";
 import useFollow from "@/hooks/useFollow";
@@ -11,7 +11,7 @@ interface UserBioProps {
   userId: string;
 }
 
-export const UserBio: React.FC<UserBioProps> = ({ userId }) => {
+const UserBio: React.FC<UserBioProps> = ({ userId }) => {
   const { data: currentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(userId);
 
@@ -69,3 +69,5 @@ export const UserBio: React.FC<UserBioProps> = ({ userId }) => {
     </div>
   );
 };
+
+export default UserBio;

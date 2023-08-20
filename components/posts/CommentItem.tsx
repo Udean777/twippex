@@ -7,7 +7,7 @@ interface CommentItemProps {
   data: Record<string, any>;
 }
 
-export const CommentItem: React.FC<CommentItemProps> = ({ data }) => {
+const CommentItem: React.FC<CommentItemProps> = ({ data }) => {
   const router = useRouter();
 
   const goToUser = useCallback(
@@ -50,3 +50,5 @@ export const CommentItem: React.FC<CommentItemProps> = ({ data }) => {
     </div>
   );
 };
+
+export default CommentItem;

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { Input } from "../Input";
-import { Modal } from "../Modal";
+import Input from "../Input";
+import Modal from "../Modal";
 import { signIn } from "next-auth/react";
 
 import useLoginModal from "@/hooks/useLoginModal";
@@ -8,7 +8,7 @@ import useRegisterModal from "@/hooks/useRegisterModal";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export const RegisterModal = () => {
+const RegisterModal = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
@@ -112,3 +112,5 @@ export const RegisterModal = () => {
     />
   );
 };
+
+export default RegisterModal;

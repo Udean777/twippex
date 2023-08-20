@@ -9,7 +9,7 @@ interface ImageUploadProps {
   disabled?: boolean;
 }
 
-export const ImageUpload: React.FC<ImageUploadProps> = ({
+const ImageUpload: React.FC<ImageUploadProps> = ({
   onChange,
   label,
   value,
@@ -68,3 +68,5 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
     </div>
   );
 };
+
+export default ImageUpload;

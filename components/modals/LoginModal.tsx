@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
-import { Input } from "../Input";
-import { Modal } from "../Modal";
+import Input from "../Input";
+import Modal from "../Modal";
 import useLoginModal from "@/hooks/useLoginModal";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import { signIn } from "next-auth/react";
 
-export const LoginModal = () => {
+const LoginModal = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 
@@ -86,3 +86,5 @@ export const LoginModal = () => {
     />
   );
 };
+
+export default LoginModal;

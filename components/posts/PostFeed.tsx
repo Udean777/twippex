@@ -1,11 +1,11 @@
 import usePosts from "@/hooks/usePosts";
-import { PostItem } from "./PostItem";
+import PostItem from "./PostItem";
 
 interface PostFeedProps {
   userId?: string;
 }
 
-export const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
+const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
   const { data: posts = [] } = usePosts(userId);
   return (
     <>
@@ -15,3 +15,5 @@ export const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
     </>
   );
 };
+
+export default PostFeed;

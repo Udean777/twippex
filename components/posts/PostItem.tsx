@@ -12,7 +12,7 @@ interface PostItemProps {
   userId?: string;
 }
 
-export const PostItem: React.FC<PostItemProps> = ({ data, userId }) => {
+const PostItem: React.FC<PostItemProps> = ({ data, userId }) => {
   const router = useRouter();
   const loginModal = useLoginModal();
 
@@ -96,3 +96,5 @@ export const PostItem: React.FC<PostItemProps> = ({ data, userId }) => {
     </div>
   );
 };
+
+export default PostItem;
